@@ -1,4 +1,14 @@
 #####################################################################
+#### Git commands`
+#####################################################################
+1. Create repository
+	git init
+2. Checkout repository
+	git clone /path/to/repository
+	git clone username@host:/path/to/repository
+
+
+#####################################################################
 #### GIT initialization
 #####################################################################
 git config --global user.name "abc"
@@ -16,7 +26,7 @@ git add --all
 git add *.java
 
 #####################################################################
-#### committing 
+#### commit - file is committed to the HEAD, but not in your remote repository yet
 #####################################################################
 1. git pull
 2. add your changes
