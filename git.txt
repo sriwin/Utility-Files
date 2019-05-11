@@ -1,0 +1,253 @@
+#####################################################################
+#### GIT initialization
+#####################################################################
+git config --global user.name "abc"
+git config --global user.email abc@xyz.com
+
+#####################################################################
+#### Clone Repository 
+#####################################################################
+git clone repository-url
+
+#####################################################################
+#### Add Files 
+#####################################################################
+git add --all
+git add *.java
+
+#####################################################################
+#### committing 
+#####################################################################
+1. git pull
+2. add your changes
+3. git add --all
+4. git commit -m "Commit comments"
+5. git push origin master
+
+#####################################################################
+#### push changes to remote
+#####################################################################
+git push -u origin env/qa
+git push origin master
+git push
+
+#####################################################################
+#### remove files
+#####################################################################
+git rm -f xxx.xlsx
+
+#####################################################################
+#### Git remove folder
+#####################################################################
+git rm -rf <directory_name>
+
+#####################################################################
+#### Renaming a branch
+#####################################################################
+1 Rename the local branch to the new name
+	git branch -m <old_name> <new_name>
+2 Delete the old branch on remote - where <remote> is, for example, origin
+	git push <remote> --delete old_name
+3 Push the new branch to remote
+	git push <remote> new_name
+4 Reset the upstream branch for the new_name local branch
+	git push <remote> -u new-name
+
+#####################################################################
+#### Git delete remote branch
+#####################################################################
+git push origin --delete <BRANCH-NAME>
+
+#####################################################################
+#### Use the checkout command to switch branch.
+#####################################################################
+git checkout <branch> 
+
+#####################################################################
+#### Git - create new branch
+#####################################################################
+git checkout -b feature/BRANCH-NAME
+
+
+#####################################################################
+#### Git - Switching to Master branch
+#####################################################################
+git checkout master
+git branch
+git pull
+git pull
+mvn clean compile
+update code changes
+git status
+git add --all
+git commit -m "place your code commit comments"
+mvn clean compile
+git push
+
+#####################################################################
+#### Git - Switching to QA branch
+#####################################################################
+git checkout qa
+git branch
+git pull
+git pull
+mvn clean compile
+update code changes
+git status
+git add --all
+git commit -m "place your code commit comments"
+mvn clean compile
+git push
+
+#####################################################################
+#### Git - Switching to Stage branch
+#####################################################################
+git checkout stage
+git branch
+git pull
+git pull
+mvn clean compile
+update code changes
+git status
+git add --all
+git commit -m "place your code commit comments"
+mvn clean compile
+git push
+
+#####################################################################
+#### Download a specific branch
+#####################################################################
+option # 1 
+	git clone <GIT-URL> --branch <BRANCH-NAME>
+
+option # 2 
+	- download the master branch
+		git clone <GIT-URL>
+	- change the directory
+	- list branches
+		git branch -a
+	- checkout the specific branch
+		git checkout -b <BRANCH-NAME>
+		
+	- Confirm you are now using the branch you wanted
+		git branch 
+	- git pull <BRANCH-NAME>
+	
+	git push --set-upstream origin stage
+
+#####################################################################
+#### Git branching
+#####################################################################
+git pull
+git checkout -b xyz
+git push origin xyz
+git branch
+git remote add xyz
+
+#####################################################################
+#### Git : Move code from master to branch
+#####################################################################
+git checkout -b mybranch
+git push -u origin mybranch
+
+#####################################################################
+#### Git : Move code from master to branch
+#####################################################################
+Configure Git for the first time
+	git config --global user.name "abc"
+	git config --global user.email "abc@xyz.com"
+Working with your repository
+I just want to clone this repository
+If you want to simply clone this empty repository then run this command in your terminal.
+
+git clone <GIT-URL>
+My code is ready to be pushed
+If you already have code ready to be pushed to this repository then run this in your terminal.
+
+cd existing-project
+git init
+git add --all
+git commit -m "Initial Commit"
+git remote add origin <GIT-URL>
+git push -u origin master
+My code is already tracked by Git
+If your code is already tracked by Git then set this repository as your "origin" to push to.
+
+cd existing-project
+git remote set-url origin <GIT-URL>
+git push -u origin --all
+git push origin --tags
+
+
+
+
+
+create your feature branch
+
+# grab the latest from origin/master
+git pull --rebase origin master
+ 
+# create your feature branch
+git checkout -b 123-wine-validations
+
+commit your changes
+
+# stage and commit your changes to feature branch
+git add -A
+git commit -m "refs #123 - adding validations to wine model"
+
+deploy changes to dev for internal review
+
+# rebase from origin/master and resolve any conflicts
+git pull --rebase origin master
+ 
+# switch to the dev branch
+git checkout dev
+ 
+# rebase from origin/dev
+# (which could contain merged branches from other team members)
+git pull --rebase origin dev
+ 
+# merge your branch
+git merge 123-wine-validations
+ 
+# push changes to origin/dev (which triggers a deploy)
+git push origin dev
+
+deploy changes to stage for client review
+
+# checkout your feature branch and rebase from master
+git checkout 123-wine-validations
+git pull --rebase origin master
+ 
+# follow the previous step only using the stage branch
+git checkout stage
+git pull --rebase origin stage
+git merge 123-wine-validations
+git push origin stage
+
+deploy changes to production
+
+# checkout your feature branch and rebase from master
+git checkout 123-wine-validations
+git pull --rebase origin master
+ 
+# push your branch to origin
+git push origin 123-wine-validations
+ 
+# open a Pull Request to merge feature branch into master
+# or merge it to master manually
+
+
+
+
+#####################################################################
+#### GIT Error : fatal: remote error: Repository not found
+#####################################################################
+1. Error
+	git push -u origin master
+	fatal: remote error: Repository not found
+	The requested repository does not exist, or you do not have permission to access it.
+2. Solution
+	git remote rm origin
+	$ git remote add origin <GIT-URL>
